@@ -11,7 +11,7 @@ app.use(cors());
 const {ProjectRouter}=require("./Routes/ProjectRoute");
 //routes
 
-app.get('/',()=>{
+app.get('/',(req,res)=>{
     res.send("hello database");
 });
 app.use("/project",ProjectRouter);
