@@ -5,7 +5,7 @@ const ProjectRouter=express.Router();
 
 ProjectRouter.get("/get",async(req,res)=>{
   try{
-   const projects=await ProjectfinalModel.find({email:req.body.email});
+   const projects=await ProjectfinalModel.find({email:req.query.email});
    res.status(200).json(projects);
   }
   catch(err){
