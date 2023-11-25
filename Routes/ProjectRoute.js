@@ -2,11 +2,22 @@ const {ProjectfinalModel}=require("../models/ProjectModel");
 const express=require("express");
 const ProjectRouter=express.Router();
 
+
+ProjectRouter.get("/get",async(req,res)=>{
+  try{
+   const projects=await ProjectfinalModel.find({email:req.body.email});
+   res.status(200).json(projects);
+  }
+  catch(err){
+   res.status(400).json(err);
+  }
+});
+
 ProjectRouter.post("/add",async(req,res)=>{
    try{
     const project=await ProjectfinalModel(req.body);
     await project.save();
-    res.status(200).json("added successfully");
+    res.status(200).json(project);
    }
    catch(err){
     res.status(400).json(err);
